@@ -12,8 +12,8 @@
   <!-- <span>:특정 부분을 선택해 스타일을 적용하거나 조작할 때 주로 사용 -->
   <!-- <small> 태그: 의미(semantic)를 추가하면서 크기를 작게 만듭니다. -->
         <div class="card shadow-sm">
-          <span class="img" :style="{backgroundImage: `url(${item1.imgPath})` }" />
-          <!-- *위는 스타일을 css에서 vue형태로 코딩한 것임 ->url을 수시로 바꿀필요도 없고 별도의 css를 작성하지 않아도 된다. -->
+          <span class="img" :style="{backgroundImage: `url(${item1.imgPath})` }" style="cursor: pointer;"/>
+          <!-- $$ *위는 스타일을 css에서 vue형태로 코딩한 것임 ->url을 수시로 바꿀필요도 없고 별도의 css를 작성하지 않아도 된다. -->
 
           <div class="card-body">
             <p class="card-text">
