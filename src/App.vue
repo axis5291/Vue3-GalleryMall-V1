@@ -94,7 +94,6 @@ export default {
 // 주석:여기에서 id가 두 번째 인자 값(sendId)로 전달됩니다. ->store.js참조
 </script>
 
-
 <style>
 .bd-placeholder-img {
   font-size: 1.125rem;
