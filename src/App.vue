@@ -8,7 +8,7 @@ src/
 ├── router.js       # Vue Router 설정
 ├── store           # Vuex 상태 관리 설정
 ├── assets/         # 정적 파일 (CSS, 이미지 등)
-└── components/     # 컴포넌트
+└── components/     # 컴포넌트 
 
 2.사전설정
  2-1.package.json에서 로컬pc에서 스프링서버와 충돌을 피하기 위해 뷰서버 포트번호를 3000으로 변경 
