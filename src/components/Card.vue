@@ -48,11 +48,13 @@
 //*1.숫자를 컴마로 변화하는 함수(getCommaFormated)를 자바스크립트 lib.js을을 가져와서 사용
 import lib from "@/scripts/lib"  //@->src를 가리킨다.  ../scripts/lib 이렇게 해도 됨
 import axios from 'axios';
+import ImageModal from './ImageModal.vue';  //$$이미지 모달창을 띄우기 위해 가져옴
 
 export default{
   name:'CardComponent',
   props:{
     item1:Object,  //*상단 template에 Home.vue에서 item1의 이름으로 넘어온 객체를 쓸 수 있다.
+    ImageModal:ImageModal,  //$$
   },
 
   setup(){
