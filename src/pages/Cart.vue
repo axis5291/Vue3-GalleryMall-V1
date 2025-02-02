@@ -38,7 +38,7 @@ export default{
       const remove=(itemId)=>{
         axios.delete(`/api/cart/items/${itemId}`).then(()=>{
           load();
-          console.log("장바구니에서 삭제 성공:", itemId);
+          console.log(itemId+"번 itemId:"+"장바구니에서 삭제 성공");
         })
       };
 

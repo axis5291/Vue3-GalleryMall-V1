@@ -57,8 +57,8 @@ export default{
 
   setup(){
     const addToCart=(itemId)=>{
-     axios.post(`/api/cart/items/${itemId}`).then(()=>{
-       console.log("장바구니에 담기 성공:"+itemId);
+       axios.post(`/api/cart/items/${itemId}`).then(()=>{
+       console.log( itemId+"번 itemId:"+"장바구니에 담기 성공");
      })
      //`/api/cart/items/${itemId}`에서 스프링의 @PostMapping("/api/cart/items/{itemId}") 와 일치해야 한다
      //대소문자도 구별한다.  ${itemId}와 스프링의 {ItemId}로 하는 바람에 오류가 발생했다.

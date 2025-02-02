@@ -36,6 +36,8 @@ src/
 이것으로 인해서 header와 footer는 가만히 있는 상태에서 url에 따라 중간화면이 home이나 login페이지가 바뀐다-->
 <!-- main.js에서 라우터를 설정하여 <Home />가 필요없게 하였다. -->
 <!-- <Home /> -->
+
+<ImageModal />
 <Footer />
 
 </template>
@@ -44,6 +46,7 @@ src/
 import HeaderComponent from './components/Header.vue';
 //import HomeComponent from './pages/Home.vue';
 import FooterComponent from './components/Footer.vue';
+import ImageModalComponent  from './components/ImageModal.vue';   //$$
 import store from './scripts/store.js';
 import axios from 'axios';
 import { useRoute } from 'vue-router';
@@ -54,6 +57,7 @@ export default {
   components: {
    Header:HeaderComponent,
    //Home:HomeComponent,
+   ImageModal:ImageModalComponent,   //$$
    Footer:FooterComponent, 
    
   },
