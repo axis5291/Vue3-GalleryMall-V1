@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <!-- App.vue에서 넘겨준 openModalApp이 true이면 모달창이 열린다. -->
+    <!-- App.vue에서 넘겨준 openModalApp이 true이면 모달창이 열린다. Test -->
   </div>
 
 
