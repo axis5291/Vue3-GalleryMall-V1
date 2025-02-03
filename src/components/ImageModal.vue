@@ -8,7 +8,7 @@
   
   <script>
      export default{
-       name:"ImageModalComponent", //컴포넌트 용도로 쓸려면 명명규칙에 따라 Modal한 다음에 Component를 붙여준다. 
+       name:"ImageModalComponent",  //컴포넌트 용도로 쓸려면 명명규칙에 따라 Modal한 다음에 Component를 붙여준다. 
        
        props:{    
          //App.vue의 <Modal>태그에서 넘겨준 것을 '변수명:데이터 타입'으로 등록. 
