@@ -13,9 +13,7 @@
        props:{    
          //App.vue의 <Modal>태그에서 넘겨준 것을 '변수명:데이터 타입'으로 등록. 
          //그러면 App.vue에서 정의한 변수들을 인식하고 이 파일에서 <template>에서 쓸수 있다. 
-       openModalApp:Boolean,
-       movieListApp:Array,
-       selectedMovieApp:Number,
+      
        
       },
   
