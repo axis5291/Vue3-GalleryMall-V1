@@ -9,20 +9,24 @@
     
            -->
 <template>
+  <!-- $$ --> <ImageModal :openImageModal="openImageModal" :item1="item1" @closeModal="openImageModal=false;" />
   <!-- <span>:특정 부분을 선택해 스타일을 적용하거나 조작할 때 주로 사용 -->
   <!-- <small> 태그: 의미(semantic)를 추가하면서 크기를 작게 만듭니다. -->
-        <div class="card shadow-sm">
-          <span class="img" :style="{backgroundImage: `url(${item1.imgPath})` }" />
-          <!-- *위는 스타일을 css에서 vue형태로 코딩한 것임 ->url을 수시로 바꿀필요도 없고 별도의 css를 작성하지 않아도 된다. -->
+  <div class="card shadow-sm">
+    <span class="img" @click="openImageModal = true" :style="{backgroundImage: `url(${item1.imgPath})` }" style="cursor: pointer;" > 
 
-          <div class="card-body">
-            <p class="card-text">
-              <span >{{ item1.name }}&nbsp;</span>  
-              <span class="discount badge bg-danger">  
+          
+    </span>
+    <!-- *위는 스타일을 css에서 vue형태로 코딩한 것임 ->url을 수시로 바꿀필요도 없고 별도의 css를 작성하지 않아도 된다. -->
+
+    <div class="card-body">
+      <p class="card-text">
+        <span >{{ item1.name }}&nbsp;</span>  
+          <span class="discount badge bg-danger">  
                 <!-- 부트스트랩제공(검색할것)badge:짧은 정보를 표시,  작은 크기의 텍스트와 테두리를 포함, 배경색이 채워짐. bg-danger:빨간색 배경 -->
                 {{ item1.discountPrice}}% 할인
-              </span>
-            </p>
+          </span>
+      </p>
 
             <div class="d-flex justify-content-between align-items-center">
               <button class="btn btn-primary" @click="addToCart(item1.id)"> <!--**카트에 담는 로직 하단 함수참조    -->
@@ -39,15 +43,14 @@
             </div>
           </div>   <!-- <div class="card-body"> -->
         </div>
-     
-
 </template>
-
 
 <script>
 //*1.숫자를 컴마로 변화하는 함수(getCommaFormated)를 자바스크립트 lib.js을을 가져와서 사용
 import lib from "@/scripts/lib"  //@->src를 가리킨다.  ../scripts/lib 이렇게 해도 됨
 import axios from 'axios';
+import { ref } from 'vue';  //$$ ref를 가져온다.
+import ImageModal from "./ImageModal.vue"  //$$이미지 모달창을 가져온다.
 
 export default{
   name:'CardComponent',
@@ -55,7 +58,12 @@ export default{
     item1:Object,  //*상단 template에 Home.vue에서 item1의 이름으로 넘어온 객체를 쓸 수 있다.
   },
 
+  components:{  //$$
+    ImageModal:ImageModal, //이미지 모달창을 사용할 수 있게 한다.
+  }, 
+
   setup(){
+    const openImageModal=ref(false); //$$ 모달창을 열기위한 변수를 선언한다.
     const addToCart=(itemId)=>{
        axios.post(`/api/cart/items/${itemId}`).then(()=>{
        console.log( itemId+"번 itemId:"+"장바구니에 담기 성공");
@@ -63,11 +71,9 @@ export default{
      //`/api/cart/items/${itemId}`에서 스프링의 @PostMapping("/api/cart/items/{itemId}") 와 일치해야 한다
      //대소문자도 구별한다.  ${itemId}와 스프링의 {ItemId}로 하는 바람에 오류가 발생했다.
     }
-    return{lib, addToCart}  //2.가져온 것을 이렇게 선언하면 상단에서 쓸수 있다.
+    return{openImageModal, lib, addToCart}  //2.가져온 것을 이렇게 선언하면 상단에서 쓸수 있다.
   }
 }
-
-
 </script>
 
 <style scoped>    /* scoped의 역할: 해당 Vue 컴포넌트에서만 스타일을 적용. */
