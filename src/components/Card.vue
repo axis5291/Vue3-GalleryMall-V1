@@ -9,9 +9,11 @@
     
            -->
 <template>
-  <!-- $$ --> <ImageModal :openImageModal="openImageModal" :item1="item1" @closeModal="openImageModal=false;" />
-  <!-- <span>:특정 부분을 선택해 스타일을 적용하거나 조작할 때 주로 사용 -->
-  <!-- <small> 태그: 의미(semantic)를 추가하면서 크기를 작게 만듭니다. -->
+  <!-- $$  ImageModal.vue로 :item1="item1"을 보냄--> 
+  <ImageModal :openImageModal="openImageModal" :item1="item1" @closeModal="openImageModal=false;" />
+  <!-- ImageModal.vue에서 @click="$emit('closeModal')"로 보낸 것을 @closeModal로 받아 openImageModal=false로 설정-->
+
+  <!-- <span>:특정 부분을 선택해 스타일을 적용하거나 조작, <small>:의미(semantic)를 추가하면서 크기를 작게. -->
   <div class="card shadow-sm">
      <!-- $$  @click="openImageModal = true"  -->
     <span class="img" @click="openImageModal = true" :style="{backgroundImage: `url(${item1.imgPath})` }" style="cursor: pointer;"  /> 
@@ -53,12 +55,12 @@ import ImageModal from "./ImageModal.vue"  //$$이미지 모달창을 가져온�
 export default{
   name:'CardComponent',
   props:{
-    item1:Object,  //*상단 template에 Home.vue에서 item1의 이름으로 넘어온 객체를 쓸 수 있다.
+    item1:Object,  //*Home.vue에서  <Card :item1="item"/>으로 넘어온 객체를 쓸 수 있다.
   },
 
   components:{  //$$
     ImageModal:ImageModal, //이미지 모달창을 사용할 수 있게 한다.
-  }, 
+  },  
 
   setup(){
     const openImageModal=ref(false); //$$ 모달창을 열기위한 변수를 선언한다.

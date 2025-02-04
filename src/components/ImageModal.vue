@@ -12,8 +12,8 @@ import { ref, computed } from "vue";
 
 export default {
   props: {
-    openImageModal: Boolean,
-    item1: Object,
+    openImageModal: Boolean,  
+    item1: Object,         //Card.vue에서 <ImageModal :item1="item1">로 받아온 값
   },
 
 setup() {

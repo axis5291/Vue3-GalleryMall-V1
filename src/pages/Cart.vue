@@ -2,11 +2,16 @@
     <div class="cart">
       <div class="container">
         <ul>
-          <li v-for="(item, index) in state.items" :key="index"  class="d-flex align-items-center">
-            <img :src="item.imgPath"  class="me-3" style="cursor: pointer;" />
-            <span class="name">제목:{{ item.name }}</span>
-            <span class="price ms-3"> 할인가:₩{{ lib.getCommaFormated(item.price -(item.price*item.discountPrice/100)) }}</span>
-            <i class="fa fa-trash ms-auto text-danger fs-6" style="cursor: pointer;" @click="remove(item.id)"> 삭제</i>  <!-- 쓰레기통 모양 -->
+          <li v-for="(item1, index) in state.items" :key="index"  class="d-flex align-items-center">
+            <!-- $$  ImageModal.vue로 :item1="item1"을 보냄 -->  
+            <ImageModal :openImageModal="openImageModal" :item1="item1" @closeModal="openImageModal=false;" />
+            <!-- ImageModal.vue에서 @click="$emit('closeModal')"로 보낸 것을 @closeModal로 받아 openImageModal=false로 설정-->
+
+            <img :src="item1.imgPath" @click="openImageModal = true" class="me-3" style="cursor: pointer;" />
+            
+            <span class="name">제목:{{ item1.name }}</span>
+            <span class="price ms-3"> 할인가:₩{{ lib.getCommaFormated(item1.price -(item1.price*item1.discountPrice/100)) }}</span>
+            <i class="fa fa-trash ms-auto text-danger fs-6" style="cursor: pointer;" @click="remove(item1.id)"> 삭제</i>  <!-- 쓰레기통 모양 -->
           </li>
         </ul>
         <router-link to="/order" class="btn btn-primary">구입하기</router-link>
@@ -18,10 +23,16 @@
 <script>
 import axios from 'axios';
 import lib from "@/scripts/lib";
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
+import ImageModal from "../components/ImageModal.vue";
 
 export default{
+    name:'CartComponent',
+    components:{
+      ImageModal:ImageModal
+    },
     setup(){
+      const openImageModal=ref(false); //$$ 모달창을 열기위한 변수를 선언한다.
       const state=reactive({
           items:[]
       });
@@ -42,7 +53,7 @@ export default{
         })
       };
 
-      return {state, lib, remove}
+      return {state, lib, remove,openImageModal}
     }
 } 
 </script>
